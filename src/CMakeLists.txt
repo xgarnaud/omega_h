@@ -504,6 +504,7 @@ set(Omega_h_HEADERS
   Omega_h_sort.hpp
   Omega_h_stacktrace.hpp
   Omega_h_std_vector.hpp
+  Omega_h_surface.hpp
   Omega_h_svd.hpp
   Omega_h_table.hpp
   Omega_h_tag.hpp
