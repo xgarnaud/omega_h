@@ -198,6 +198,7 @@ Reals generate_metrics(Mesh* mesh, MetricInput const& input) {
       Omega_h_fail("Too many element count limiting iterations\n");
     }
     metrics = Reals();
+    bool has_scaled_metric = false;
     for (size_t i = 0; i < input.sources.size(); ++i) {
       auto in_metrics = original_metrics[i];
       if (get_metrics_dim(n, in_metrics) == 1) {
@@ -205,6 +206,7 @@ Reals generate_metrics(Mesh* mesh, MetricInput const& input) {
       }
       if (input.sources[i].scales == OMEGA_H_SCALES) {
         in_metrics = multiply_each_by(in_metrics, scalar);
+        has_scaled_metric = true;
       }
       if (input.should_limit_lengths) {
         in_metrics =
@@ -223,7 +225,7 @@ Reals generate_metrics(Mesh* mesh, MetricInput const& input) {
       metrics = limit_metric_gradation(mesh, metrics, input.max_gradation_rate,
           input.gradation_convergence_tolerance, input.verbose);
     }
-    if (!input.should_limit_element_count) {
+    if (!input.should_limit_element_count || !has_scaled_metric) {
       break;
     } else {
       auto nelems = get_expected_nelems(mesh, metrics);
