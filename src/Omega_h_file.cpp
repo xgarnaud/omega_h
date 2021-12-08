@@ -645,10 +645,10 @@ OMEGA_H_DLL Mesh read_mesh_file(filesystem::path const& path, CommPtr comm) {
   auto const extension = path.extension().string();
   if (extension == ".osh") {
     return binary::read(path, comm);
-  } else if (extension == ".meshb") {
+  } else if (extension == ".meshb" || extension == ".mesh") {
 #ifdef OMEGA_H_USE_LIBMESHB
     Mesh mesh(comm->library());
-    meshb::read(&mesh, path);
+    meshb::read(&mesh, path.string());
     mesh.set_comm(comm);
     return mesh;
 #else
