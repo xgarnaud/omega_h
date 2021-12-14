@@ -481,6 +481,7 @@ set(Omega_h_HEADERS
   Omega_h_matrix.hpp
   Omega_h_mesh.hpp
   Omega_h_metric.hpp
+  Omega_h_metric_intersect.hpp
   Omega_h_mpi.h
   Omega_h_owners.hpp
   Omega_h_parser.hpp
