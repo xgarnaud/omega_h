@@ -628,6 +628,9 @@ set(${KEY_${TYPE}} \"${val}\")")
   endforeach()
   set(CONFIG_CONTENT
 "${CONFIG_CONTENT}
+if (Omega_h_USE_MPI)
+  find_dependency(MPI 3 REQUIRED)
+endif()
 ")
   install(FILES
     "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
