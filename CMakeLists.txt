@@ -56,10 +56,8 @@ set(Omega_h_USE_libMeshb_DEFAULT OFF)
 bob_add_dependency(PUBLIC NAME libMeshb TARGETS libMeshb::Meshb.7)
 
 set(Omega_h_USE_Gmsh_DEFAULT OFF)
-bob_add_dependency(PUBLIC NAME Gmsh
-    INCLUDE_DIR_VARS Gmsh_INCLUDE_DIRS
-    LIBRARY_VARS Gmsh_LIBRARIES)
 if(Omega_h_USE_Gmsh)
+  find_package(Gmsh)
   if(Gmsh_VERSION_STRING VERSION_LESS 4.4.1)
     message(SEND_ERROR "Gmsh minimum version is 4.4.1 but found version ${Gmsh_VERSION_STRING}")
   endif()

@@ -186,8 +186,7 @@ endif()
 bob_link_dependency(omega_h PUBLIC Kokkos)
 
 bob_link_dependency(omega_h PUBLIC libMeshb)
-
-bob_link_dependency(omega_h PUBLIC Gmsh)
+target_link_libraries(omega_h PRIVATE ${Gmsh_LIBRARIES})
 
 if(Omega_h_USE_EGADS)
   target_include_directories(omega_h PUBLIC "${EGADS_INCLUDE_DIR}")
